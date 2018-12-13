@@ -2,9 +2,9 @@ version: '3'
 services:
   server:
     build: ./Container1
-    container_name: memcached_server
+    container_name: server_container
     ports:
       - "10023:22"
-	client:
-    build:
-YOUR CODE GOES HERE
+#	client:
+#    build:
+#YOUR CODE GOES HERE
