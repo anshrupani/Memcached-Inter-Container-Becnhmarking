@@ -6,8 +6,8 @@ name         = "memchached Experiment"
 
 timeout         = 150
 
-raw_output_dir = "raw-throughput-latency"
-sum_output_dir = "output-throughput-latency"
+raw_output_dir = "/home/ubuntu/raw-throughput-latency"
+sum_output_dir = "/home/ubuntu/output-throughput-latency"
 
 localDir        = "."
 
@@ -15,9 +15,9 @@ optspace = {
     "rate"    : [1000, 2000, 5000, 10000, 20000, 30000, 50000, 100000, 150000],
 }
 
-SSHHost    = "localhost"
+SSHHost    = "server_container"
 SSHPort    = 22
-REMOTEROOT = "~"
+REMOTEROOT = "/memcached-1.4.33/memcached"
 
 class Statistics (dude.summaries.FilesLineSelect):
     def __init__(self, n, h, folder = localDir):
