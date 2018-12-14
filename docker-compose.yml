@@ -5,6 +5,7 @@ services:
     container_name: server_container
     ports:
       - "10023:22"
-#	client:
-#    build:
-#YOUR CODE GOES HERE
+  client:
+    build: ./Container2
+    ports:
+      - "10022:22"
