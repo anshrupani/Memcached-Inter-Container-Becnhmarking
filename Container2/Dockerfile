@@ -12,7 +12,7 @@ RUN cd twemperf-0.1.1 && autoreconf -fvi && ./configure && make && make install
 RUN apt-get install -y python python-setuptools && wget https://bitbucket.org/db7/dude/get/v3.1.tar.gz && tar -xf v3.1.tar.gz && cd db7-dude-e0a2a25bd2a7 && python setup.py install
 RUN apt-get install -y r-base
 
-RUN useradd ubuntu
+RUN useradd -u 1000 ubuntu
 RUN mkdir /var/run/sshd && mkdir -p /home/ubuntu/.ssh
 
 WORKDIR /home/ubuntu
