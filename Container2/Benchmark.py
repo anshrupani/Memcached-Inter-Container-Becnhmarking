@@ -14,7 +14,8 @@ def prepare_exp(SSHHost, SSHPort, REMOTEROOT, optpt):
 
     f.write("if [[ -z \"${RESULT// }\" ]]; then echo \"memcached process not running\"; CODE=1; else CODE=0; fi\n")
         
-    f.write("mcperf -N %d -R %d -n %d -s %s > stats.log 2>&1\n\n" % (optpt["noRequests"]*10 ,optpt["noRequests"], optpt["concurrency"], SSHHost)) #adjust this line to properly start the client
+    f.write("mcperf --num-calls=%d --call-rate=%d --num-conns=%d -s %s > stats.log 2>&1\n\n" % (optpt["noRequests"]*10 ,optpt["noRequests"], optpt["concurrency"], SSHHost)) #adjust this line to properly start the client
+
 
     f.write("REQPERSEC=`cat stats.log | grep 'Response rate' | sed 's/Response rate: //' | awk '{print $1}'`\n")
     f.write("LATENCY=`cat stats.log | grep 'Response time \[ms\]: avg ' | sed 's/Response time \[ms\]: avg //' | awk '{print $1}'`\n")
