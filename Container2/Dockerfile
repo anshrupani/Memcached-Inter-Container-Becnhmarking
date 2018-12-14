@@ -15,11 +15,15 @@ RUN apt-get install -y r-base
 RUN useradd ubuntu
 RUN mkdir /var/run/sshd && mkdir -p /home/ubuntu/.ssh
 
+WORKDIR /home/ubuntu
 COPY run.sh run.sh
 COPY Dudefile Dudefile
 COPY graphs.R graphs.R
 COPY Benchmark.py Benchmark.py
-
+RUN chmod +x run.sh 
+COPY authorized_keys /home/ubuntu/.ssh/authorized_keys
+COPY id_rsa /home/ubuntu/.ssh/id_rsa
+RUN chmod 600 /home/ubuntu/.ssh/id_rsa
 RUN chown -R ubuntu /home/ubuntu
 
 EXPOSE 22
